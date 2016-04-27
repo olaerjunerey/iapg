@@ -2,6 +2,7 @@
  * Created by 0514-3604-cect on 4/18/2016.
  */
 import React from 'react';
+import TodoItem from './todoItem'
 
 export default  class TodoApp extends React.Component{
 
@@ -16,22 +17,23 @@ export default  class TodoApp extends React.Component{
         
     }
     
-    onChange(e){
+    onChange=(e)=>{
         this.setState({
             mytodo:e.target.value
         })
     }
     
-    onAddItem(){
+    onAddItem=()=>{
         var listx = this.state.list;
         listx.push(this.state.mytodo)
         
         this.setState({
             list:listx
         })
-    }
+    };
     
-    onKeyUp(e){
+    
+    onKeyUp=(e)=>{
             if( e.key==='Enter'){
                 let  tmp = this.state.list;
                 tmp.push(this.state.mytodo);
@@ -42,22 +44,39 @@ export default  class TodoApp extends React.Component{
             }
         }
     
+    deleteMe=(index)=>{
+          var tmp=this.state.list;
+          tmp.splice(index,1);
+          this.setState({
+              list:tmp
+          });
+    };
+    
     render(){
+        
+       
         let items=[];
         for(var i=0;i<this.state.list.length;i++){
-                items.push(<li>{this.state.list[i]}</li>)
+                items.push(<TodoItem key={i}
+                                    description={this.state.list[i]}
+                                    index={i}
+                                    removeMe={this.deleteMe}
+                                    />);
         }
 
+ console.log(items);
         return (
-            <div>
-            <h1>My Todo List</h1>
-            <input type="text" onChange={this.onChange.bind(this)} 
+            <div className="todoapp">
+            <h1 className="header">My Todo List</h1>
+            <input type="text" 
+                   onChange={this.onChange} 
                 value={this.state.mytodo}
-                onKeyUp={this.onKeyUp.bind(this)}/>
-            <ol>
+                onKeyUp={this.onKeyUp}
+                />
+            
             {items}
-            </ol>
-        </div>
-        )
+          
+            </div>
+        );
     }
 }

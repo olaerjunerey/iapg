@@ -1,0 +1,25 @@
+.todoapp{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: beige;
+}
+
+.todoapp .header{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.card{
+    width: 350px;
+    height: 100px;
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: blue;
+    color: white;
+    margin-top: 3px;
+    border-radius: 5px 5px 5px 5px;
+}
+.close{
+    float: right;
+}
