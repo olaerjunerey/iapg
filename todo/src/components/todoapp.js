@@ -68,7 +68,7 @@ export default  class TodoApp extends React.Component{
         return (
             <div className="todoapp">
             <h1 className="header">My Todo List</h1>
-            <input type="text" 
+            <input type="text" placeholder="What needs to be done?"
                    onChange={this.onChange} 
                 value={this.state.mytodo}
                 onKeyUp={this.onKeyUp}
